@@ -9,6 +9,7 @@ import { POKEMONS } from './pokemon/mock';
 })
 export class PokemonServiceService implements OnInit{
   private apiUrl = 'api/pokemons';
+  pokemonList : Pokemon[]
 
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
@@ -39,7 +40,11 @@ export class PokemonServiceService implements OnInit{
   private log(response: Pokemon[] | Pokemon | undefined): void {
     console.table(response);
   }
-
+searchPokemonList(pokemonName: string): Observable<Pokemon[]> {
+  const pokemonList = this.ListDePokemon();
+  const foundPokemon = pokemonList.filter(pokemon => pokemon.name === pokemonName);
+  return of(foundPokemon.length > 0 ? [foundPokemon[0]] : []);
+}
   getPokemonTypeList(): string[] {
     return [
       'plante',

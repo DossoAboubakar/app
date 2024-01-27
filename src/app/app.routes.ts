@@ -4,25 +4,34 @@ import { DetailPokemonComponent } from './pokemon/detail-pokemon/detail-pokemon.
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 import { EditPokemonComponent } from './pokemon/edit-pokemon/edit-pokemon.component';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {
         path:'edit/pokemon/:id',
-        component:EditPokemonComponent
+        component:EditPokemonComponent,
+        canActivate : [AuthGuard]
+    },
+    {
+        path:'login',
+        component:LoginComponent,
     },
     {
         path:'pokemons',
-        component:ListPokemonComponent
+        component:ListPokemonComponent,
+        canActivate : [AuthGuard]
     },
 
     {
         path:'pokemon/:id',
-        component:DetailPokemonComponent
+        component:DetailPokemonComponent,
+        canActivate : [AuthGuard]
     },
 
     {
         path:'',
-        redirectTo:'pokemons',pathMatch:'full'
+        redirectTo:'login',pathMatch:'full'
     },
     {
         path:'**',

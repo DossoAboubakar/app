@@ -5,13 +5,14 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PokemonTypeColorPipe } from "../pokemon/pokemon-type-color.pipe";
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from "../pokemon/loader/loader.component";
 
 @Component({
     selector: 'app-pokemon-form',
     standalone: true,
     templateUrl: './pokemon-form.component.html',
     styleUrls: ['./pokemon-form.component.css'],
-    imports: [FormsModule, PokemonTypeColorPipe,CommonModule]
+    imports: [FormsModule, PokemonTypeColorPipe, CommonModule, LoaderComponent]
 })
 export class PokemonFormComponent implements OnInit {
   

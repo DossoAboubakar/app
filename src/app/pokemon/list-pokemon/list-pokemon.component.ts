@@ -8,14 +8,15 @@ import { PokemonServiceService } from '../../pokemon-service.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { InMemoryDataService } from '../../in-memory-data.service';
+import { SearchPokemonComponent } from "../search-pokemon/search-pokemon.component";
 
 @Component({
     selector: 'app-list-pokemon',
     standalone: true,
     templateUrl: './list-pokemon.component.html',
     styleUrl: './list-pokemon.component.css',
-    imports: [PokemonTypeColorPipe,CommonModule,HttpClientModule],
-    providers :[PokemonServiceService,HttpClientInMemoryWebApiModule]
+    providers: [PokemonServiceService, HttpClientInMemoryWebApiModule],
+    imports: [PokemonTypeColorPipe, CommonModule, HttpClientModule, SearchPokemonComponent]
 })
 export class ListPokemonComponent implements OnInit {
 
